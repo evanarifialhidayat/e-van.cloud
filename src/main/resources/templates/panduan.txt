@@ -1,0 +1,37 @@
+instalasi disini
+eclipce = https://www.eclipse.org/downloads/packages/release/luna/sr2/eclipse-ide-java-developers
+openjdk version "11.0.2" 2019-01-15  = https://www.oracle.com/java/technologies/javase/jdk11-archive-downloads.html
+postgresql 13  = https://www.postgresql.org/download/
+git = https://git-scm.com/downloads
+
+
+komponen membuat 1 tampilan adalah 
+1 controller
+4 html 
+- html pertama jadi induk misal nama nya "panduan.html"
+- html berikutnya adalah
+{
+    <div  th:insert="header"></div>
+    <div  th:insert="panduanBody"></div>
+    <div  th:insert="toogle"></div>
+}
+- html body harus mengandung kata "Body"
+- html header berisi menu 
+- html toogle berisi menu yang di sebelah kanan
+
+cara kerja aplikasi pemanggilan nya adalah 
+klo mau manggil data dari data base adalah 
+1 controller manggil src/main/java/com/app/wms/wmss/controller/services
+2 services implemet manggil src/main/java/com/app/wms/wmss/controller/service/impl
+3 impl manggil repo langsung src/main/java/com/app/wms/wmss/controller/repo
+4 repo dari model src/main/java/com/app/wms/wmss/controller/model
+
+untuk naro logik ada di package src/main/java/com/app/wms/wmss/controller/logik
+
+untuk naro validasi data hardcode gunakan class di src/main/java/com/app/wms/wmss/controller/constanta
+
+
+
+
+tbl_menu = wmsm (001)
+tbl_user = wmsu (001)
