@@ -1,25 +1,32 @@
 package com.app.ptkp.system.controller;
 
-import java.util.Set;
+import java.io.IOException;
+import java.util.Base64;
+import com.app.ptkp.system.util.QRCodeGenerator;
+import com.google.zxing.WriterException;
 
-import com.app.ptkp.system.controller.logik.PanduanLogik;
-import com.app.ptkp.system.util.ResponseHandler;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class IndexController {
 	
     @GetMapping(value = "/")
     public String index(Model model){
+    	 String medium="https://rahul2602199sss9.medium.com/";    	 
+         Resource resource = new ClassPathResource("QRCode.png");
+         byte[] image = new byte[0];
+         try {
+             image = QRCodeGenerator.getQRCodeImage(medium,250,250);
+         } catch (WriterException | IOException e) {
+             e.printStackTrace();
+         }
+         
+         String qrcode = Base64.getEncoder().encodeToString(image);
+         model.addAttribute("qrcode",qrcode);
         return "index";
     }
 
@@ -32,5 +39,5 @@ public class IndexController {
     public String panduan(Model model){
         return "panduan";
     }
-
+    
 }
