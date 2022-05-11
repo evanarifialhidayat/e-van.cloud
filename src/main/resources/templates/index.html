@@ -36,11 +36,6 @@
         </div>
 
         <div  th:insert="toogleindex"></div>
-         
-      <div style="width:40%;display: inline-block">
-       <img th:src="${'data:image/png;base64,'+qrcode}" alt="" height="250" width="250"> 
-      </div>
-								
 		
 
 <script th:src="@{/ui/metronic_v5/assets/vendors/base/vendors.bundle.js}" type="text/javascript"></script>
@@ -55,9 +50,9 @@
 							// header: 'List of Panduan',
 							total: 9,
 							records: [
-									{ "recid": 1, "snama": "John"  , "snomor": "Doe"    , "sjudul": "jdoe@gmail.com1", "slembaga":"Ptkp" ,"stanggal": "4/3/2012" },
-									{ "recid": 2, "snama": "Stuart", "snomor": "Motzart", "sjudul": "jdoe@gmail.com2", "slembaga":"ptkps","stanggal": "4/3/2012" },
-									{ "recid": 3, "snama": "Stuart", "snomor": "Motzart", "sjudul": "jdoe@gmail.com3", "slembaga":"ptkps","stanggal": "4/3/2012" }
+									{ "recid": 1, "snama": "John"  , "snomor": "Doe"    , "sjudul": "jdoe@gmail.com1", "slembaga":"Ptkp" ,"stanggal": "4/3/2012" ,"ssertifikat":'[[${qrcode}]]' },
+									{ "recid": 2, "snama": "Stuart", "snomor": "Motzart", "sjudul": "jdoe@gmail.com2", "slembaga":"ptkps","stanggal": "4/3/2012" ,"ssertifikat":'[[${qrcode}]]' },
+									{ "recid": 3, "snama": "Stuart2", "snomor": "Motzart", "sjudul": "jdoe@gmail.com3", "slembaga":"ptkps","stanggal": "4/3/2012","ssertifikat":'[[${qrcode}]]' }
 							],
 							show: {
 							//	 header         : true,
@@ -72,7 +67,8 @@
 								{ field: 'snomor', caption: 'Nomer Sertifikat', size: '70%' },
 								{ field: 'sjudul', caption: 'Judul Traning', size: '120%' },
 								{ field: 'slembaga', caption: 'Lembaga Penyelenggara', size: '120%' },
-								{ field: 'stanggal', caption: 'Tanggal Pelaksanaan', size: '120%' }
+								{ field: 'stanggal', caption: 'Tanggal Pelaksanaan', size: '120%' },
+								{ field: 'ssertifikat', caption: 'Sertifikat', size: '120%' }
 							],
 							searches: [
 								{ type: 'int',  field: 'recid', caption: 'ID' },
@@ -80,15 +76,40 @@
 								{ type: 'text', field: 'snomor', caption: 'Nomer Sertifikat' },
 								{ type: 'text', field: 'sjudul', caption: 'Judul Traning' },
 								{ type: 'text', field: 'slembaga', caption: 'Lembaga Penyelenggara' },
-								{ type: 'date', field: 'stanggal', caption: 'Tanggal Pelaksanaan' }
-							]
-						});    
-						w2ui.grid.on('click', function(event) {
+								{ type: 'date', field: 'stanggal', caption: 'Tanggal Pelaksanaan' },
+								{ type: 'text', field: 'ssertifikat', caption: 'Sertifikat' }
+							],
+							onDblClick: function(event) {
 							var grid = this;
-							event.onComplete = function () {
-								var sel = grid.getCellValue(0, 2);
-								console.log('Current selection is ' + sel);
+							event.onComplete = function() {
+								var sel_rec_ids = grid.getSelection();
+								if (sel_rec_ids.length) {
+									var sel_record = grid.get(sel_rec_ids[0]);
+									console.log('selected ID:', sel_record.ssertifikat, '/ selected Name:', sel_record.snama);
+									openPopup(sel_record.ssertifikat);
+								} else {
+									console.log("Nothing selected!");
+								}
 							}
-						});
+							}
+						});   
+						w2ui['grid'].hideColumn('ssertifikat');
+						function openPopup(params) {
+							w2popup.open({
+										title: 'QR Code Sertifikat',
+										width: 300,
+										height: 340,
+										showMax: true,
+										body: '<div > <img src='+params+' alt="" height="300" width="300" style=" display: block;margin-left: auto;  margin-right: auto;  width: 100%;">  </div>',
+										onToggle(event) {
+											event.done(() => { w2ui.layout.resize() })
+										}
+									})
+									.then(() => {
+										$('#w2ui-popup #main').w2render('layout')
+										w2ui.layout.html('left', w2ui.sidebar)
+										w2ui.layout.html('main', w2ui.grid)
+									})
+							}
 			</script>
 </html>

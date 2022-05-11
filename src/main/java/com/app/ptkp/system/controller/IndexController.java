@@ -1,10 +1,16 @@
 package com.app.ptkp.system.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Base64;
+import java.util.Date;
+
+import com.app.ptkp.system.controller.model.QrCodeRespon;
 import com.app.ptkp.system.util.QRCodeGenerator;
 import com.google.zxing.WriterException;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Controller;
@@ -16,7 +22,15 @@ public class IndexController {
 	
     @GetMapping(value = "/")
     public String index(Model model){
-    	 String medium="https://rahul2602199sss9.medium.com/";    	 
+       JSONArray arr = new JSONArray();
+       arr.add(new QrCodeRespon(1, "as", "sss", "sjudul", "slembaga", new Date(), "ssertifikat1"));
+       arr.add(new QrCodeRespon(1, "as", "sss", "sjudul", "slembaga", new Date(), "ssertifikat2"));
+      
+System.out.println("============"+arr);
+
+
+      
+        String medium="https://rahul2602199sss9.medium.com/";    	 
          Resource resource = new ClassPathResource("QRCode.png");
          byte[] image = new byte[0];
          try {
@@ -25,7 +39,7 @@ public class IndexController {
              e.printStackTrace();
          }
          
-         String qrcode = Base64.getEncoder().encodeToString(image);
+         String qrcode = "data:image/png;base64,"+Base64.getEncoder().encodeToString(image);
          model.addAttribute("qrcode",qrcode);
         return "index";
     }
