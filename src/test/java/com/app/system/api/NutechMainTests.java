@@ -1,4 +1,4 @@
-package com.app.nutech.api;
+package com.app.system.api;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
