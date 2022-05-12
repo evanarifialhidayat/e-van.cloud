@@ -12,9 +12,9 @@ public class QrCodeRespon {
     private String  snomor;
     private String sjudul;
     private String slembaga;
-    private Date stanggal;
+    private String stanggal;
     private String ssertifikat;
-    public QrCodeRespon(Integer recid, String snama, String snomor, String sjudul, String slembaga, Date stanggal,
+    public QrCodeRespon(Integer recid, String snama, String snomor, String sjudul, String slembaga, String stanggal,
             String ssertifikat) {
         this.recid = recid;
         this.snama = snama;

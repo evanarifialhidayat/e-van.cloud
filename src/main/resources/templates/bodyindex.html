@@ -1,6 +1,7 @@
+<form th:action="@{/index-save}"   id="frm" name="frm" method="post">
 <div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body" style="padding-left: 0px; 
                         background-color: white ; ">  
-                                
+                              
                                 <div class="m-portlet m-portlet--creative m-portlet--bordered-semi col-sm-12" style="margin-bottom: 0px;">
                                     <div class="m-portlet__head">
                                         <div class="m-portlet__head-caption">
@@ -26,7 +27,7 @@
 												<div class="form-group m-form__group row">
 													<label class="col-form-label col-lg-3 col-sm-12" style="text-align: left;">Nama</label>
 													<div class="col-lg-6 col-md-9 col-sm-12">
-														<input type="email" class="form-control m-input" placeholder="Enter full name">
+														<input type="text" th:name="snama" class="form-control m-input" placeholder="Enter full name">
 													</div>
 												</div>
 											</div>
@@ -35,7 +36,7 @@
 													<label class="col-form-label col-lg-3 col-sm-12" style="text-align: right;">Nomer Sertifikat</label>
 													<div class="col-lg-6 col-md-9 col-sm-12">
 														<div class="input-group">
-															<input type="text" class="form-control m-input" name="creditcard" placeholder="Enter number sertifikat">
+															<input type="text" class="form-control m-input" name="snomor" placeholder="Enter number sertifikat">
 															<div class="input-group-append">
 																<span class="input-group-text">
 																	<i class="la la-credit-card"></i>
@@ -53,7 +54,7 @@
 											<div class="form-group m-form__group row">
 												<label class="col-form-label col-lg-3 col-sm-12" style="text-align: left;">Judul Traning</label>
 												<div class="col-lg-6 col-md-9 col-sm-12">
-													<textarea class="form-control m-input" name="memo" placeholder="Enter judul Traning"></textarea>
+													<textarea class="form-control m-input" name="sjudul" placeholder="Enter judul Traning"></textarea>
 												</div>
 											</div>
 										</div>
@@ -61,7 +62,7 @@
 											<div class="form-group m-form__group row">
 												<label class="col-form-label col-lg-3 col-sm-12" style="text-align: right;">Nama Lembaga</label>
 												<div class="col-lg-6 col-md-9 col-sm-12">
-													<textarea class="form-control m-input" name="memo" placeholder="Enter lembaga penyelenggara"></textarea>
+													<textarea class="form-control m-input" name="slembaga" placeholder="Enter lembaga penyelenggara"></textarea>
 												</div>
 											</div>
 										</div>
@@ -77,7 +78,7 @@
                                                         <label class="col-form-label col-lg-3 col-sm-12" style="text-align: left;">Tanggal pelaksanaan</label>
                                                         <div class="col-lg-6 col-md-9 col-sm-12">
 															<div class="input-group date">
-																<input type="text" class="form-control m-input" readonly="" placeholder="Enter tanggal pelaksanaan" id="m_datepicker_2">
+																<input type="text" class="form-control m-input" readonly="" name="stanggal" placeholder="Enter tanggal pelaksanaan" id="m_datepicker_2">
 																<div class="input-group-append">
 																	<span class="input-group-text">
 																		<i class="la la-calendar-check-o"></i>
@@ -105,7 +106,7 @@
 											<div class="col-sm-12" >
 												<div class="m-portlet__foot m-portlet__foot--fit" style="text-align: center;">
 													<div class="m-form__actions" style="margin-top: 30px;">
-														<button type="reset" class="btn btn-accent">Submit</button>
+														<button type="submit" class="btn btn-accent">Submit</button>
 														<button type="reset" class="btn btn-secondary">Cancel</button>
 													</div>
 												</div>
@@ -113,5 +114,6 @@
 								    	</div>
                                     </div> 
                                 </div>  
-
-        </div>
+		
+</div>
+</form>

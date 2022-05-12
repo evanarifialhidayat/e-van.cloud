@@ -5,9 +5,9 @@ import java.util.Optional;
 
 import javax.persistence.EntityManager;
 
-import com.app.ptkp.system.controller.model.t_setting;
-import com.app.ptkp.system.controller.repo.t_settingRepo;
-import com.app.ptkp.system.controller.services.t_settingService;
+import com.app.ptkp.system.controller.model.Sertifikat;
+import com.app.ptkp.system.controller.repo.SertifikatRepo;
+import com.app.ptkp.system.controller.services.SertifikatService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,26 +15,26 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
-public class t_settingImpl implements t_settingService{
+public class SertifikatRepoImpl implements SertifikatService{
 	
-	@Autowired t_settingRepo t_trx_gateRepo;
+	@Autowired SertifikatRepo sertifikatRepo;
 	@Autowired	private EntityManager em;
 
 	@Override
 	public List findAllData() {
-		return (List) t_trx_gateRepo.findAll();
+		return (List) sertifikatRepo.findAll();
 	}
 
 	@Override
-	public t_setting saveData(t_setting gate) {
+	public Sertifikat saveData(Sertifikat gate) {
 //		Optional<t_trx_gate> objGet = t_trx_gateRepo.findById(gate.id_seq); 
-		t_setting obj = t_trx_gateRepo.save(gate);	
+        Sertifikat obj = sertifikatRepo.save(gate);	
 		return obj;
 	}
 
 	@Override
-	public t_setting updateData(t_setting gate) {
-		t_setting obj = em.find(t_setting.class,gate.id_seq); 
+	public Sertifikat updateData(Sertifikat gate) {
+		Sertifikat obj = em.find(Sertifikat.class,gate.id_seq); 
 		if(obj != null) {
 //			devinisikan data apa aja yg mau di update dari gate
 //			obj.setDelete(Long.valueOf("1"));
@@ -44,8 +44,8 @@ public class t_settingImpl implements t_settingService{
 	}
 
 	@Override
-	public t_setting deleteData(t_setting gate) {
-		t_setting obj = em.find(t_setting.class,gate.id_seq); 
+	public Sertifikat deleteData(Sertifikat gate) {
+		Sertifikat obj = em.find(Sertifikat.class,gate.id_seq); 
 		if(obj != null) {
 //			devinisikan data apa aja yg mau di delete dari gate
 //			obj.setDelete(Long.valueOf("1"));
