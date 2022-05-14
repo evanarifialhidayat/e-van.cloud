@@ -31,10 +31,10 @@ public class Sertifikat {
 	@Column(name="snomor")
 	public String snomor;
 	
-	@Column(name="sjudul")
+	@Column(name="sjudul",columnDefinition = "text")
 	public String sjudul;
 	
-	@Column(name="slembaga")
+	@Column(name="slembaga",columnDefinition = "text")
 	public String slembaga;
 
     @Column(name = "stanggal")
