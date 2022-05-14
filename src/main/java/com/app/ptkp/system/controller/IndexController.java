@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import com.app.ptkp.system.controller.model.QrCodeRespon;
 import com.app.ptkp.system.controller.model.Sertifikat;
 import com.app.ptkp.system.controller.repo.SertifikatRepo;
+import com.app.ptkp.system.controller.services.SertifikatService;
 import com.app.ptkp.system.util.QRCodeGenerator;
 import com.google.zxing.WriterException;
 
@@ -33,6 +34,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class IndexController {
 
     @Autowired	private SertifikatRepo sertifikatRepo;	 
+    @Autowired  private SertifikatService sertifikatService;
 	
     @GetMapping(value = "/")
     public String index(Model model){
@@ -42,7 +44,8 @@ public class IndexController {
      List listParam = (List<Sertifikat>) sertifikatRepo.findAll();
 		if(listParam.size() > 0) {
 			for(int i=0; i<listParam.size(); i++) {
-				obj = (Sertifikat) listParam.get(i);               
+				obj = (Sertifikat) listParam.get(i);     
+              
                 Resource resource = new ClassPathResource("QRCode.png");
                 byte[] image = new byte[0]; 
                 try {
@@ -51,45 +54,33 @@ public class IndexController {
                     e.printStackTrace();
                 }
                 obj.setSsertifikat("data:image/png;base64,"+Base64.getEncoder().encodeToString(image));
-                arr.add(new QrCodeRespon(i, obj.getSnama(), obj.getSnomor(), obj.getSjudul(), obj.getSlembaga(), obj.getSlembaga(), obj.getSsertifikat()));
                 ardata = obj.getSsertifikat();
 			 }
 		}
-
-      
-         String medium2="https://rahul2602199sss9.medium.com/";    	 
-         Resource resource2 = new ClassPathResource("QRCode.png");
-         byte[] image2 = new byte[0]; 
-         try {
-             image2 = QRCodeGenerator.getQRCodeImage(medium2,250,250);
-         } catch (WriterException | IOException e) {
-             e.printStackTrace();
-         }
-         
-         String qrcode = "data:image/png;base64,"+Base64.getEncoder().encodeToString(image2);
-
-         model.addAttribute("qrcode",ardata);
-         model.addAttribute("arr",arr);
+         model.addAttribute("arr",listParam);
         return "index";
     }
 
     @PostMapping("/index-save")
 	public String userSave(@ModelAttribute("name") Sertifikat userparam, Model model, HttpSession session, HttpServletRequest request) {
-        System.out.println("======"+userparam.getSnama());
-        System.out.println("======"+userparam.getStanggal());
-
         sertifikatRepo.save(userparam);
-                return "redirect:/";
+        return "redirect:/";
     }
+    @GetMapping(value = "/delete")
+    public String delete(Model model, @RequestParam String id){
+        Sertifikat obj = new Sertifikat();
+        obj.setId_seq(Long.parseLong(id));
+        sertifikatService.deleteData(obj);
+        return "redirect:/";
+    }
+    // @GetMapping(value = "/login")
+    // public String login(Model model){
+    //     return "login";
+    // }
 
-    @GetMapping(value = "/login")
-    public String login(Model model){
-        return "login";
-    }
-
-    @GetMapping(value = "/panduan")
-    public String panduan(Model model){
-        return "panduan";
-    }
+    // @GetMapping(value = "/panduan")
+    // public String panduan(Model model){
+    //     return "panduan";
+    // }
     
 }

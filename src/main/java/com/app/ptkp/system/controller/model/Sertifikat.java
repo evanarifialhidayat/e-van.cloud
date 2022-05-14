@@ -99,7 +99,20 @@ public class Sertifikat {
 		this.ssertifikat = ssertifikat;
 	}
 
-	
+	@Override
+	public String toString() {
+		
+				return "{\"recid\":"+        id_seq 
+				+ ", \"snama\":\"" +         snama 
+				+ "\", \"snomor\":\"" +      snomor 
+				+ "\", \"sjudul\":\"" +      sjudul
+                + "\", \"slembaga\":\"" +    slembaga 
+				+ "\", \"stanggal\":\"" +    stanggal 
+				+ "\", \"ssertifikat\":\"" + ssertifikat 
+				+ "\", \"id_seq\":\""+       id_seq 
+				+"\"}";
+	}
+
 	
 
     

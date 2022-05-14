@@ -26,7 +26,7 @@ public class QrCodeRespon {
     }
     @Override
     public String toString() {
-        return "{\"recid\"=\""+ recid + "\", \"sjudul\"=\"" + sjudul + "\", \"slembaga\"=\"" + slembaga + "\", \"snama\"=\"" + snama
+        return "{\"recid\"="+ recid + ", \"sjudul\"=\"" + sjudul + "\", \"slembaga\"=\"" + slembaga + "\", \"snama\"=\"" + snama
                 + "\", \"snomor\"=\"" + snomor + "\", \"ssertifikat\"=\"" + ssertifikat + "\", \"stanggal\"=\"" + stanggal + "\"}";
     }
 
