@@ -16,6 +16,7 @@ import com.app.ptkp.system.controller.model.Sertifikat;
 import com.app.ptkp.system.controller.repo.SertifikatRepo;
 import com.app.ptkp.system.controller.services.SertifikatService;
 import com.app.ptkp.system.util.QRCodeGenerator;
+import com.app.ptkp.system.util.RandomCaracter;
 import com.google.zxing.WriterException;
 
 import org.json.simple.JSONArray;
@@ -44,8 +45,10 @@ public class IndexController {
      List listParam = (List<Sertifikat>) sertifikatRepo.findAll();
 		if(listParam.size() > 0) {
 			for(int i=0; i<listParam.size(); i++) {
-				obj = (Sertifikat) listParam.get(i);     
-              
+				obj = (Sertifikat) listParam.get(i);  
+                if(obj.ssertifikat == null) obj.ssertifikat = "";
+                if(obj.snomor == null || "".equals(obj.snomor.trim())) obj.setSnomor(RandomCaracter.randomCaracterString(10));
+
                 Resource resource = new ClassPathResource("QRCode.png");
                 byte[] image = new byte[0]; 
                 try {
@@ -63,6 +66,8 @@ public class IndexController {
 
     @PostMapping("/index-save")
 	public String userSave(@ModelAttribute("name") Sertifikat userparam, Model model, HttpSession session, HttpServletRequest request) {
+        if(userparam.ssertifikat == null) userparam.ssertifikat = "";
+        if(userparam.snomor == null || "".equals(userparam.snomor.trim())) userparam.setSnomor(RandomCaracter.randomCaracterString(10));
         sertifikatRepo.save(userparam);
         return "redirect:/";
     }
