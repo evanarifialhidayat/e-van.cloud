@@ -48,11 +48,11 @@ public class IndexController {
 				obj = (Sertifikat) listParam.get(i);  
                 if(obj.ssertifikat == null) obj.ssertifikat = "";
                 if(obj.snomor == null || "".equals(obj.snomor.trim())) obj.setSnomor(RandomCaracter.randomCaracterString(10));
-
+                String dataQr = (obj.getSnama()+"||"+obj.getSnomor()+"||"+obj.getSlembaga()+"||"+obj.getSjudul()+"||"+obj.getStanggal());
                 Resource resource = new ClassPathResource("QRCode.png");
                 byte[] image = new byte[0]; 
                 try {
-                    image = QRCodeGenerator.getQRCodeImage(obj.getSnomor(),250,250);
+                    image = QRCodeGenerator.getQRCodeImage(dataQr,250,250);
                 } catch (WriterException | IOException e) {
                     e.printStackTrace();
                 }

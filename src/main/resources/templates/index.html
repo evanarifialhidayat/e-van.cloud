@@ -89,7 +89,7 @@
 								var sel = this.getSelection();
 									var sel_record = this.get(sel[0]);
 								if(menuid == 1){								
-									openPopup(sel_record.ssertifikat);
+									openPopup(sel_record.snama,sel_record.snomor,sel_record.sjudul,sel_record.slembaga,sel_record.stanggal,sel_record.ssertifikat);
 								}else if(menuid == 2){
 									console.log("Nothing selected==="+sel_record.id_seq);
 									window.location.href=[[@{/delete}]]+'?id='+sel_record.id_seq;
@@ -117,13 +117,79 @@
 					// ]);
 
 						w2ui['grid'].hideColumn('ssertifikat', 'id_seq');
-						function openPopup(params) {
+						function openPopup(a,b,c,d,e,params) {
 							w2popup.open({
 										title: 'QR Code Sertifikat',
-										width: 300,
-										height: 340,
+										width: 700,
+										height: 360,
 										showMax: true,
-										body: '<div > <img src='+params+' alt="" height="300" width="300" style=" display: block;margin-left: auto;  margin-right: auto;  width: 100%;">  </div>',
+										body: '<div > '+"\n"+
+											'<div class="col-sm-5" style="padding-left: 8px;">'+"\n"+
+
+											'  <div class="m-widget5">'+"\n"+
+
+											'   <div class="m-widget5__item">'+"\n"+
+											'			<div class="m-widget5__content">'+"\n"+
+
+											
+											'				<div class="m-widget5__pic" style="width: 200px;">'+"\n"+
+											'					<img src='+params+' alt="" style="width: 300px; height:305px; padding-top: 10px;"> '+"\n"+
+											'				</div>'+"\n"+
+											
+											'				<div class="m-widget5__section">'+"\n"+
+												
+											'					<h4 class="m-widget5__title" style="color: dodgerblue;font-weight: 900; width: 350px;" >'+"\n"+
+											'						Nama Sertifikat'+"\n"+
+											'					</h4>'+"\n"+
+											'					<span class="m-widget5__desc" style="font-weight: bold;">'+"\n"+
+											'						'+a+''+"\n"+
+											'					</span> '+"\n"+
+
+											'<hr></hr>'+"\n"+
+
+											'                   <h4 class="m-widget5__title" style="color: dodgerblue;font-weight: 900; width: 350px;">'+"\n"+
+											'						Nomor Sertifikat'+"\n"+
+											'					</h4>'+"\n"+
+											'					<span class="m-widget5__desc" style="font-weight: bold;">'+"\n"+
+											'						'+b+''+"\n"+
+											'					</span>'+"\n"+
+
+											'<hr></hr>'+"\n"+
+
+											'                   <h4 class="m-widget5__title" style="color: dodgerblue;font-weight: 900; width: 350px;">'+"\n"+
+											'						Judul Traning'+"\n"+
+											'					</h4>'+"\n"+
+											'					<span class="m-widget5__desc" style="font-weight: bold;">'+"\n"+
+											'						'+c+''+"\n"+
+											'					</span>'+"\n"+
+
+											'<hr></hr>'+"\n"+
+
+											'                   <h4 class="m-widget5__title" style="color: dodgerblue;font-weight: 900; width: 350px;">'+"\n"+
+											'						Lembaga Penyelenggara'+"\n"+
+											'					</h4>'+"\n"+
+											'					<span class="m-widget5__desc" style="font-weight: bold;">'+"\n"+
+											'						'+d+''+"\n"+
+											'					</span>'+"\n"+
+
+											'<hr></hr>'+"\n"+
+
+											'                   <h4 class="m-widget5__title" style="color: dodgerblue;font-weight: 900;width: 350px;">'+"\n"+
+											'						Tanggal Pelaksanaan'+"\n"+
+											'					</h4>'+"\n"+
+											'					<span class="m-widget5__desc" style="font-weight: bold;">'+"\n"+
+											'						'+e+''+"\n"+
+											'					</span>'+"\n"+
+											
+											'				</div>'+"\n"+
+											'			</div>'+"\n"+
+										
+
+											'		</div>'+"\n"+
+											'  </div>'+"\n"+
+											'</div>'+"\n"+
+											
+											'  </div>',
 										onToggle(event) {
 											event.done(() => { w2ui.layout.resize() })
 										}
