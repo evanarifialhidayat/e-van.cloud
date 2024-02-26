@@ -36,8 +36,14 @@ public class IndexController {
 
     @Autowired	private SertifikatRepo sertifikatRepo;	 
     @Autowired  private SertifikatService sertifikatService;
-	
+    
     @GetMapping(value = "/")
+    public String indexprofile(Model model){
+    	
+    	return "indexprofile";
+    }
+	
+    @GetMapping(value = "/cert")
     public String index(Model model){
      JSONArray arr = new JSONArray();
      Sertifikat obj = new Sertifikat();
@@ -64,19 +70,19 @@ public class IndexController {
         return "index";
     }
 
-    @PostMapping("/index-save")
+    @PostMapping("/cert/index-save")
 	public String userSave(@ModelAttribute("name") Sertifikat userparam, Model model, HttpSession session, HttpServletRequest request) {
         if(userparam.ssertifikat == null) userparam.ssertifikat = "";
         if(userparam.snomor == null || "".equals(userparam.snomor.trim())) userparam.setSnomor(RandomCaracter.randomCaracterString(10));
         sertifikatRepo.save(userparam);
-        return "redirect:/";
+        return "redirect:/cert";
     }
     @GetMapping(value = "/delete")
     public String delete(Model model, @RequestParam String id){
         Sertifikat obj = new Sertifikat();
         obj.setId_seq(Long.parseLong(id));
         sertifikatService.deleteData(obj);
-        return "redirect:/";
+        return "redirect:/cert";
     }
     // @GetMapping(value = "/login")
     // public String login(Model model){

@@ -11,10 +11,12 @@ public class UiConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler(
-        "/ui/**"
+        "/ui/**",
+        "/ui_profile/**"
                 )
                 .addResourceLocations(
-                        "classpath:/static/ui/"
+                        "classpath:/static/ui/",
+                        "classpath:/static/ui_profile/"
                 );
     } 
 }

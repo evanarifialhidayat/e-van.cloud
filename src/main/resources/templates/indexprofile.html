@@ -1,0 +1,543 @@
+<html xmlns="http://www.w3.org/1999/xhtml" 
+            xmlns:th="http://www.thymeleaf.org" 
+            xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+            xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <meta name="keywords" content="" />
+
+    <title>Evan Arifial Hidayat</title>
+
+
+    <link rel="shortcut icon" th:href="@{/ui_profile/images/evan.ico}" type="image/x-icon"  />
+
+
+	<link th:href="@{/ui_profile/fonts/font-awesome-4.3.0/css/font-awesome.min.css}" rel="stylesheet" type="text/css" />
+	<link th:href="@{/ui_profile/css/stroke.css}" rel="stylesheet" type="text/css" />
+	<link th:href="@{/ui_profile/css/bootstrap.css}" rel="stylesheet" type="text/css" />
+	<link th:href="@{/ui_profile/css/animate.css}" rel="stylesheet" type="text/css" />
+	<link th:href="@{/ui_profile/css/prettyPhoto.css}" rel="stylesheet" type="text/css" />
+	<link th:href="@{/ui_profile/css/style.css}" rel="stylesheet" type="text/css" />
+	<link th:href="@{/ui_profile/js/syntax-highlighter/styles/shCore.css}" rel="stylesheet" type="text/css" />
+	<link th:href="@{/ui_profile/js/syntax-highlighter/styles/shThemeRDark.css}" rel="stylesheet" type="text/css" />
+	<link th:href="@{/ui_profile/css/custom.css}" rel="stylesheet" type="text/css" />
+	
+	
+	
+	<style>
+			div.containerHeader::before {
+			   content:url(http://placehold.it/350x150);
+			}​
+
+	</style>
+  </head>
+
+  <body>
+    <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+
+    <script>
+      var mybutton = document.getElementById("myBtn");
+      window.onscroll = function () {
+        scrollFunction();
+      };
+      function scrollFunction() {
+        if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000) {
+          mybutton.style.display = "block";
+        } else {
+          mybutton.style.display = "none";
+        }
+      }
+      function topFunction() {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        document.documentElement.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        document.querySelector("#mode").addEventListener("click", () => {
+          document.querySelector("html").classList.toggle("dark");
+        });
+      });
+    </script>
+
+    <div id="wrapper">
+      <div id="mode">
+        <div class="dark">
+          <svg aria-hidden="true" viewBox="0 0 512 512">
+            <title>lightmode</title>
+            <path
+              fill="currentColor"
+              d="M256 160c-52.9 0-96 43.1-96 96s43.1 96 96 96 96-43.1 96-96-43.1-96-96-96zm246.4 80.5l-94.7-47.3 33.5-100.4c4.5-13.6-8.4-26.5-21.9-21.9l-100.4 33.5-47.4-94.8c-6.4-12.8-24.6-12.8-31 0l-47.3 94.7L92.7 70.8c-13.6-4.5-26.5 8.4-21.9 21.9l33.5 100.4-94.7 47.4c-12.8 6.4-12.8 24.6 0 31l94.7 47.3-33.5 100.5c-4.5 13.6 8.4 26.5 21.9 21.9l100.4-33.5 47.3 94.7c6.4 12.8 24.6 12.8 31 0l47.3-94.7 100.4 33.5c13.6 4.5 26.5-8.4 21.9-21.9l-33.5-100.4 94.7-47.3c13-6.5 13-24.7.2-31.1zm-155.9 106c-49.9 49.9-131.1 49.9-181 0-49.9-49.9-49.9-131.1 0-181 49.9-49.9 131.1-49.9 181 0 49.9 49.9 49.9 131.1 0 181z"
+            ></path>
+          </svg>
+        </div>
+        <div class="light">
+          <svg aria-hidden="true" viewBox="0 0 512 512">
+            <title>darkmode</title>
+            <path
+              fill="currentColor"
+              d="M283.211 512c78.962 0 151.079-35.925 198.857-94.792 7.068-8.708-.639-21.43-11.562-19.35-124.203 23.654-238.262-71.576-238.262-196.954 0-72.222 38.662-138.635 101.498-174.394 9.686-5.512 7.25-20.197-3.756-22.23A258.156 258.156 0 0 0 283.211 0c-141.309 0-256 114.511-256 256 0 141.309 114.511 256 256 256z"
+            ></path>
+          </svg>
+        </div>
+      </div>
+
+      <div class="container">
+        <section id="top" class="section docs-heading">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="big-title text-center">
+			  <div class="container" 
+			  				th:style="'background: #000000'">
+						<h1 style="color: white;">Evan Arifial Hidayat</h1>
+						<p style="color: white;margin-top: 0;" class="lead">Profile Documentation & Tutorials...</p>	
+              </div>
+            </div>
+          </div>
+          <hr />
+        </section>
+        <!-- end section -->
+
+        <div class="row">
+          <div class="col-md-3">
+            <nav class="docs-sidebar" data-spy="affix" data-offset-top="300" data-offset-bottom="200" role="navigation">
+              <ul class="nav">
+                <li><a href="#line1">M-Pos Sulawesi Selatan</a></li>
+                <li><a href="#line2">GEPI</a></li>
+                <li><a href="#line3">Palapa</a></li>
+                <li><a href="#line4">HATS</a></li>
+                <li><a href="#line5">WMSME</a></li>
+                <li><a href="#line6">Proban POS</a></li>         
+              </ul>
+            </nav>
+          </div>
+          <div class="col-md-9">
+            <section class="welcome">
+              <div class="row">
+                <div class="col-md-12 left-align">
+                  <h2 class="dark-text">
+                    Introduction
+                  </h2>
+                  <div class="row">
+                    <div class="col-md-12 full">
+                      <div class="intro1">
+                        <ul>
+                          <li><strong>Name     : </strong>Evan Arifial Hidayat</li>
+                          <li><strong>Version  : </strong>v 1.0.0</li>
+						  <li><strong>Email    : </strong>evan123hidayat@gmail.com</li>
+						  <li><strong>Tlpn     : </strong>081213955483</li>
+						  <li><strong>Country  : </strong>Indonesia</li>
+                          <li>
+                            <strong>Github : </strong>
+							<a href="https://github.com/evanarifialhidayat" target="_blank">https://github.com/evanarifialhidayat</a>
+                          </li>
+                          <li>
+                            <strong>Gitlab : </strong>
+                            <a href="https://gitlab.com/evanarifialhidayat" target="_blank">https://gitlab.com/evanarifialhidayat</a>
+                          </li>
+						  <li>
+                            <strong>Expo : </strong>
+                            <a href="https://expo.dev/accounts/evanarifialhidayat" target="_blank">https://expo.dev/accounts/evanarifialhidayat</a>
+                          </li>
+						  <li>
+                            <strong>Linkedin : </strong>
+                            <a href="https://www.linkedin.com/in/evan-arifial-hidayat-615494b6/" target="_blank">https://www.linkedin.com/in/evan-arifial-hidayat-615494b6/</a>
+                          </li>
+                        </ul>
+                      </div>
+
+                      <hr />
+                      <div>
+                        <p>
+						  Hi, introduce myself, my name <strong>is Evan Arifial Hidayat</strong> or usually called Evan. I am a Software Engineer with an interest in IT Research & Development. Currently I work in a private company under the auspices of Telkom Indonesia as a <strong>Mobile Apps Programmer.</strong>
+						</p>
+						<p>
+						Through this Web profile, I hope that the content presented can provide benefits for internet users, especially those interested in technology topics. In the future, I will continue to strive to provide quality and useful content.
+						</p>
+						<p>
+						If you have questions especially about business or projects, please send an email or contact me directly via email or telephone provided above. We will reply to messages as soon as possible if there are no problems.
+						</p>
+
+                        <h4>Skills specialist</h4>
+                        <ol>
+                          <li>Back end programming language (eg: Java,Kotlin,Rust,Go)</li>
+						  <li>Front end programming language (eg: Java Script)</li>
+                          <li>Mobile programming (eg: Java,Kotlin,Flutter,Ionic,React)</li>
+						  <li>Desktop programming (eg: Java)</li>
+						  <li>Report (eg: Birt,Pentaho,Jasper Report)</li>
+						  <li>Framework (eg: Spring,Struts,play,jsf)</li>
+                          <li>
+                            Riset & Development (
+							eg:
+                            <a href="https://github.com/matrix-org/synapse" target="_blank">Synapse</a>,
+							<a href="https://github.com/signalapp" target="_blank">Signal</a>,
+							<a href="https://github.com/OPENCBS" target="_blank">openCbs</a>,
+							<a href="https://github.com/bigbluebutton" target="_blank">Big Blue Button</a>,
+							<a href="https://github.com/flutter" target="_blank">Flutter</a>,
+							<a href="https://github.com/nordic-institute/X-Road-development" target="_blank">X-Road</a>,
+							<a href="https://github.com/apache/nifi" target="_blank">Nifi</a> <strong>dll...</strong>
+							)
+                          </li>
+                        </ol>
+                        <div class="intro2 clearfix">
+                          <p>
+                            <i class="fa fa-exclamation-triangle"></i> Be careful when following docs and tutorials. If not done correctly it will be confusing. It is best to follow step by step to avoid mistakes. No support is provided for faulty customization.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- end row -->
+                </div>
+              </div>
+            </section>
+
+            <section id="line1" class="section" style="padding-top: 0; margin-bottom: 70px;">
+              <div class="row">
+                <div class="col-md-12 left-align">
+                  <h2 class="dark-text">
+                    M-Pos Sulawesi Selatan
+                  </h2>
+                </div>
+              </div>
+			  <div class="row">
+                <div class="col-md-8">
+						© <a href="https://www.nutech-integrasi.com/" target="_blank" rel="noopener noreferrer" style="font-size: 17px;">Pt Nutech Integrasi</a>
+				</div>
+			  </div>
+              <div class="intro2 clearfix">
+                <p>
+                  <i class="fa fa-exclamation-triangle"></i> Mempercepat process transaction, menghidari kecurangan, menghindari antrian dan semua akan mudah dalam satu gegaman sistem M-pos yg kami tawarkan..
+                </p>
+              </div>
+			  <hr />	
+			   <div class="row">
+                <div class="col-md-8">
+				<br/>
+                   <video id="video" style="width: 550px; height: 200px;" controls >
+					 <source th:src="@{/ui_profile/vidio/Introduction_mpos_sulsel.mp4}" type="video/mp4">
+					</video>
+                </div>
+
+                <div class="col-md-4">
+				 <strong>Development</strong>
+                 <ul>
+						<li>1. Java</li>
+						<li>2. Xml</li>
+						<li>3. SDK Pax Engine</li>
+						<li>4. Spring Boot</li>
+						<li>5. PostgreSQL</li>
+						<li>6. Express</li>
+					  </ul>
+                </div>
+                <!-- end col -->
+              </div>
+              <hr />	              			
+			  <br/>
+            </section>
+            <!-- end section -->
+
+            <section id="line2" class="section" style="margin-bottom: 50px;">
+               <div class="row">
+                <div class="col-md-12 left-align">
+                  <h2 class="dark-text">
+                    GEPI
+                  </h2>
+                </div>
+                <!-- end col -->
+              </div>
+              <div class="row">
+                <div class="col-md-8">
+						© <a href="https://xecureit.id/" target="_blank" rel="noopener noreferrer" style="font-size: 17px;">Pt Teknologi nasional indonesia siber</a>
+				</div>
+			  </div>
+			  <div class="intro2 clearfix">
+                <p>
+                  <i class="fa fa-exclamation-triangle"></i> Aplikasi dengan vidio conference yg bisa mempermudah semua aktifitas anda dengan WFH. bekerja bisa dari 
+                </p>
+              </div>
+
+			<div class="row">
+				<div class="col-md-12 full">
+				  <div class="intro1">
+					<ul>
+					  <li>
+					  Silahkan buka tautan berikut di Chrome, Firefox, Edge, atau Safari.
+					  <br/>
+					  Join room : <strong>https://room.xecure.world/r/dmnr7gp3/?roomAccessCode=OTAwNDI2 </strong>
+					  <br/>
+					  Room ID 8413umt5									
+								</li>	
+					  <li>Akan diminta memasukkan nama sebelum join room.</li>
+					  <li>Catatan: Jika ada isu dgn audio, coba exit, kemudian join room lagi. Terkadang peserta lupa menyetujui saat browser minta ijin akses ke mic & camera.</li>
+					</ul>
+				  </div>
+
+				  <hr />
+				  
+				</div>
+			</div>
+			<div class="row">
+                <div class="col-md-6">
+                  <strong>Development</strong>
+                  <ul>
+                    <li>1. Java</li>
+					<li>2. Hibernate</li>
+                    <li>3. Bootstrap</li>
+                    <li>4. Spring Boot</li>
+                    <li>5. PostgreSQL</li>
+                    <li>6. Jquery</li>
+                  </ul>
+                </div>
+			</div>
+            </section>
+            <!-- end section -->
+
+            <section id="line3" class="section">
+              <div class="row">
+                <div class="col-md-12 left-align">
+                  <h2 class="dark-text">
+                    PALAPA
+                  </h2>
+                </div>
+                <!-- end col -->
+              </div>
+              <div class="row">
+                <div class="col-md-8">
+						© <a href="https://xecureit.id/" target="_blank" rel="noopener noreferrer" style="font-size: 17px;">Pt Teknologi nasional indonesia siber</a>
+				</div>
+			  </div>
+			  <div class="intro2 clearfix">
+                <p>
+                  <i class="fa fa-exclamation-triangle"></i> Palapa adalah:
+				  <ul>
+						<li>Generasi penerus PeSankita Indonesia (PS).</li>	
+						<li>Dirancang sebagai platform aplikasi seluler yang aman untuk Society 5.0</li>	
+						<li>Dikembangkan oleh XecureIT, perusahaan pertahanan siber terkemuka di Indonesia.</li>	
+						<li>Perangkat lunak sumber terbuka gratis.</li>	
+				  </ul>
+                </p>
+              </div>
+
+				<div class="row">
+                    <div class="col-md-12 full">
+                      <div class="intro1">
+                        <ul>
+                          <li>
+						  Silahkan buka tautan berikut di Chrome, Firefox, Edge. untuk versi android
+						  <br/>
+						  <strong>https://play.google.com/store/apps/details?id=id.xecureworld.app&hl=id</strong>
+						  </li>
+						  <li>
+						  Silahkan buka tautan berikut di Chrome, Firefox, Edge, atau Safari. untuk versi apple
+						  <br/>
+						  <strong>https://apps.apple.com/id/app/palapa/id1528936593</strong>
+						  </li>
+						  <li>
+						  Silahkan buka tautan berikut di Chrome, Firefox, Edge, atau Safari. untuk versi desktop
+						  <br/>
+						  <strong>https://landing.xecure.world/</strong>
+						  </li>
+						</ul>
+                      </div>
+
+                      <hr />
+                      
+                    </div>
+                </div>
+				<div class="row">
+                <div class="col-md-6">
+                  <strong>Development</strong>
+                  <ul>
+                    <li>1. Java</li>
+					<li>2. Hibernate</li>
+                    <li>3. Xml</li>
+                    <li>4. Angular</li>
+                    <li>5. Typscript</li>
+                    <li>6. Swift & Objective-C</li>
+					<li>7. PostgreSQL</li>
+					<li>8. Ruby</li>
+                  </ul>
+                </div>
+			</div>
+            </section>
+            <!-- end section -->
+
+            <section id="line4" class="section">
+              <div class="row">
+                <div class="col-md-12 left-align">
+                  <h2 class="dark-text">
+                    HATS
+                  </h2>
+                </div>
+                <!-- end col -->
+              </div>
+              <div class="row">
+                <div class="col-md-8">
+						© <a href="https://www.nutech-integrasi.com/" target="_blank" rel="noopener noreferrer" style="font-size: 17px;">Pt Nutech Integrasi</a>
+				</div>
+			  </div>
+			  <div class="intro2 clearfix">
+                <p>
+                  <i class="fa fa-exclamation-triangle"></i> HATS adalah: Aplikasi kehadiran dan pembagian tugas pada pt nutech integrasi devisi his..
+                </p>
+              </div>
+			  
+				<div class="row">
+                    <div class="col-md-12 full">
+                      <iframe 
+							  style="   width: 100%;    margin-top: 20px;    height: 400px;"
+							  src="https://onedrive.live.com/edit?id=2F1190A5D9ED41BB!531258&resid=2F1190A5D9ED41BB!531258&ithint=file%2cpptx&authkey=!ACc6jctc0mB9wd0&wdo=2&cid=2f1190a5d9ed41bb" title="description"></iframe>
+
+                    </div>
+                </div>
+				<div class="row">
+					<div class="col-md-6">
+					  <strong>Development</strong>
+					  <ul>
+						<li>1. Flutter</li>
+						<li>2. Swift & Objective-C</li>
+						<li>3. PostgreSQL</li>
+						<li>4. Next.js</li>
+					  </ul>
+					</div>
+				</div>
+            </section>
+            <!-- end section -->
+
+            <section id="line5" class="section">
+              <div class="row">
+                <div class="col-md-12 left-align">
+                  <h2 class="dark-text">
+				  WMSME
+                  </h2>
+                </div>
+                <!-- end col -->
+              </div>
+			  <div class="row">
+                <div class="col-md-8">
+						© <a href="https://www.linkedin.com/company/sumosor/" target="_blank" rel="noopener noreferrer" style="font-size: 17px;">Pt SumosorIT</a>
+				</div>
+			  </div>
+			   <div class="intro2 clearfix">
+                <p>
+                  <i class="fa fa-exclamation-triangle"></i> WMSME Mengelola gudang yang padat, memantau inventaris, dan memenuhi pesanan tepat waktu adalah tantangan yang kompleks. Tetapi dengan Sistem Manajemen Gudang WMSme semua itu dapat diselesaikan dengan mudah. Bayangkan mengoptimalkan operasi gudang Anda dengan akurasi tinggi, waktu pemrosesan pesanan yang lebih cepat, dan analisis data yang akan memandu keputusan strategis.
+                </p>
+              </div>
+			  <div class="row">
+                    <div class="col-md-12 full">
+                      <div class="intro1">
+                        <ul>
+                          <li>
+						  <strong>Kontrol Penuh atas Inventaris:</strong> Pantau stok barang secara real-time dan hindari masalah stok kosong atau kelebihan.
+						  </li>
+						  <li>
+						   <strong>Pesanan Lebih Cepat:</strong> Pemrosesan pesanan yang lebih cepat berarti pelanggan puas dan pertumbuhan bisnis yang lebih baik.
+						  </li>
+						  <li>
+						   <strong>Analisis Data yang Mendalam:</strong> Dapatkan wawasan berharga tentang kinerja gudang Anda melalui laporan dan analisis data yang akurat.
+						  </li>
+						  <li>
+						  <strong>Mengurangi Kesalahan Manusia:</strong> Hindari kesalahan manual dengan otomatisasi tugas-tugas penting.
+						  </li>
+						  <li>
+						  <strong>Melacak Data Historis Barang di Gudang :</strong> Jangan biarkan asset Anda yang tersimpan di dalam Gudang tidak termonitor pergerakannya.
+						  </li>
+						</ul>
+                      </div>
+
+                      <hr />
+                      
+                    </div>
+                </div>
+				<div class="row">
+                <div class="col-md-6">
+                  <strong>Development</strong>
+                  <ul>
+                    <li>1. Java</li>
+                    <li>2. Bootstrap</li>
+                    <li>3. Struts</li>
+					<li>4. Mybatis</li>
+                    <li>5. PostgreSQL</li>
+                    <li>6. Jquery</li>
+                  </ul>
+                </div>
+			</div>
+            </section>
+            <!-- end section -->
+
+            <section id="line6" class="section">
+              <div class="row">
+                <div class="col-md-12 left-align">
+                  <h2 class="dark-text">
+                    Proban POS
+                  </h2>
+                </div>
+                <!-- end col -->
+              </div>
+			  <div class="row">
+                <div class="col-md-8">
+						© <a href="https://proban.co.id/" target="_blank" rel="noopener noreferrer" style="font-size: 17px;">PT. Proban Ostburg Trisakti</a>
+				</div>
+			  </div>
+			  <div class="intro2 clearfix">
+                <p>
+                  <i class="fa fa-exclamation-triangle"></i> Proban POS aplikasi poin of sale yg di adopsi dari opensorce unicenta. dikembangkan ulang utang disesuaikan dengan kebutuhan dari pt proban.
+                </p>
+              </div>
+			  <div class="row">
+                    <div class="col-md-12 full">
+                      <div class="intro1">
+                        <ul>
+                          <li>
+						  <strong>Opensorce bisa di unduh di web resminya :</strong> https://unicenta.com/
+						  </li>
+						 
+						</ul>
+                      </div>
+
+                      <hr />
+                      
+                    </div>
+                </div>
+				<div class="row">
+                <div class="col-md-6">
+                  <strong>Development</strong>
+                  <ul>
+                    <li>1. Java</li>
+                    <li>2. Hibernate</li>
+                    <li>3. Mysql</li>
+                  </ul>
+                </div>
+			</div>
+            </section>
+          </div>
+          <!-- // end .col -->
+        </div>
+        <!-- // end .row -->
+      </div>
+      <!-- // end container -->
+    </div>
+    <!-- end wrapper -->
+    
+    <script th:src="@{/ui/js/jquery.min.js}" type="text/javascript"></script>
+    <script th:src="@{/ui/js/bootstrap.min.js}" type="text/javascript"></script>
+    <script th:src="@{/ui/js/retina.js}" type="text/javascript"></script>
+    <script th:src="@{/ui/js/jquery.fitvids.js}" type="text/javascript"></script>
+    <script th:src="@{/ui/js/wow.js}" type="text/javascript"></script>
+    <script th:src="@{/ui/js/jquery.prettyPhoto.js}" type="text/javascript"></script>
+    
+    <script th:src="@{/ui/js/custom.js}" type="text/javascript"></script>
+    <script th:src="@{/ui/js/main.js}" type="text/javascript"></script>
+    
+    <script th:src="@{/ui/js/syntax-highlighter/scripts/shCore.js}" type="text/javascript"></script>
+    <script th:src="@{/ui/js/syntax-highlighter/scripts/shBrushXml.js}" type="text/javascript"></script>
+    <script th:src="@{/ui/js/syntax-highlighter/scripts/shBrushCss.js}" type="text/javascript"></script>
+    <script th:src="@{/ui/js/syntax-highlighter/scripts/shBrushJScript.js}" type="text/javascript"></script>
+    
+
+  </body>
+</html>
