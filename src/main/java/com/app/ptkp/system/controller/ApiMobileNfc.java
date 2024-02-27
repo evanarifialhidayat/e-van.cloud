@@ -63,5 +63,25 @@ public class ApiMobileNfc {
         }
             
     }
+    
+    @RequestMapping(value = ParamPath.PATH_MOBILE_EXAMPLE, method = RequestMethod.GET)
+    public ResponseEntity<Object> apiIndexExample(Model model){    	
+        try {
+            JSONArray arr = new JSONArray();
+            UserLogin obj = new UserLogin();
+            List<UserLogin> listParam = (List<UserLogin>) userLoginRepo.findAll();
+               if(listParam.size() > 0) {
+                   for(int i=0; i<listParam.size(); i++) {
+                       obj = (UserLogin) listParam.get(i);               
+                       arr.add(obj);
+                   }
+               }
+             
+            return ResponseHandler.generateResponse("OK", HttpStatus.OK, arr.get(0).toString());
+        } catch (Exception e) {
+        	return ResponseHandler.generateResponse(e.getMessage(), HttpStatus.MULTI_STATUS, null);
+        }
+            
+    }
 
 }
