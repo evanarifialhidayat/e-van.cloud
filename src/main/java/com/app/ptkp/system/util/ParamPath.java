@@ -5,4 +5,6 @@ public class ParamPath {
 	public static final String PATH_MOBILE_NFC = "/api/nfc/login";
 	public static final String PATH_MOBILE_EXAMPLE = "/api/example";	
 	
+	public static final String PATH_WEB_AI = "/ai";	
+	
 }
