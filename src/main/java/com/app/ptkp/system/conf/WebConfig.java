@@ -13,7 +13,9 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
 @Configuration
-@ComponentScan(basePackages = {"com.app.ptkp.system.controller"
+@ComponentScan(basePackages = 
+{
+		"com.app.ptkp.system.controller"
 //		,"com.baeldung.git"
 		})
 public class WebConfig  extends WebMvcConfigurerAdapter  {
